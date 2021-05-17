@@ -4,7 +4,7 @@ Welcome to the final assignment of Week 3! You'll be building your own U-Net, a 
 
 This type of image classification is called semantic image segmentation. It's similar to object detection in that both ask the question: "What objects are in this image and where in the image are those objects located?," but where object detection labels objects with bounding boxes that may include pixels that aren't part of the object, semantic image segmentation allows you to predict a precise mask for each object in the image by labeling each pixel in the image with its corresponding class. The word “semantic” here refers to what's being shown, so for example the “Car” class is indicated below by the dark blue mask, and "Person" is indicated with a red mask:
 
-<img src="images/carseg.png" style="width:500px;height:250;">
+<img src="carseg.png" style="width:500px;height:250;">
 <caption><center> <u><b>Figure 1</u></b>: Example of a segmented image <br> </center></caption>
 
 As you might imagine, region-specific labeling is a pretty crucial consideration for self-driving cars, which require a pixel-perfect understanding of their environment so they can change lanes and avoid other cars, or any number of traffic obstacles that can put peoples' lives in danger. 
@@ -186,7 +186,7 @@ U-Net improves on the FCN, using a somewhat similar design, but differing in som
 <a name='3-1'></a>
 ### 3.1 - Model Details
 
-<img src="images/unet.png" style="width:700px;height:400;">
+<img src="unet.png" style="width:700px;height:400;">
 <caption><center> <u><b> Figure 2 </u></b>: U-Net Architecture<br> </center></caption>
 
 **Contracting path** (Encoder containing downsampling steps):
@@ -212,7 +212,7 @@ The U-Net network has 23 convolutional layers in total.
 <a name='3-2'></a>
 ### 3.2 - Encoder (Downsampling Block) 
 
-<img src="images/encoder.png" style="width:500px;height:500;">
+<img src="encoder.png" style="width:500px;height:500;">
 <caption><center> <u><b>Figure 3</u></b>: The U-Net Encoder up close <br> </center></caption>
 
 The encoder is a stack of various conv_blocks:
@@ -342,7 +342,7 @@ comparator(summary(model2), output2)
 
 The decoder, or upsampling block, upsamples the features back to the original image size. At each upsampling level, you'll take the output of the corresponding encoder block and concatenate it before feeding to the next decoder block.
 
-<img src="images/decoder.png" style="width:500px;height:500;">
+<img src="decoder.png" style="width:500px;height:500;">
 <caption><center> <u><b>Figure 4</u></b>: The U-Net Decoder up close <br> </center></caption>
 
 There are two new components in the decoder: `up` and `merge`. These are the transpose convolution and the skip connections. In addition, there are two more convolutional layers set to the same parameters as in the encoder. 
